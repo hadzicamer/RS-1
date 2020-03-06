@@ -1,0 +1,50 @@
+﻿@model TakmicenjeRezultatiVM
+
+@{
+    ViewData["Title"] = "AjaxPregled";
+}
+
+
+<table class="table table-bordered" ajax-poziv="da" ajax-rezultat="ajaxDiv">
+
+    <thead>
+        <tr>
+            <th>Odjeljenje</th>
+            <th>Broj u dnevniku</th>
+            <th><a style="color:black">Pristupio</a></th>
+            <th>Rezultat bodovi</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.row)
+        {
+            <tr>
+                <td>@x.odjeljenje</td>
+                <td>@x.brojUDnevniku</td>
+                <td>
+                    @if (x.isPristupio == true)
+                    {
+                        <span id="prva" style="background-color:green;color:white">DA</span>
+                    }
+                    else
+                    {
+                        <span id="druga" style="background-color:red;color:white">NE</span>
+
+                    }
+                </td>
+                <td>
+                    <input asp-for="@x.bodovi" />
+                </td>
+                <td>
+                @if (!Model.zaklj)
+                {
+                    <a asp-action="Uredi" class="btn btn-primary" asp-route-TakmicenjeUcesnikID="@x.TakmicenjeUcesnikID" ajax-poziv="da" ajax-rezultat="ajaxDiv">Uredi</a>
+                }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
