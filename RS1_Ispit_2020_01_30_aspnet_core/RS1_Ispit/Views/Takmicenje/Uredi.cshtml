@@ -1,0 +1,14 @@
+﻿@model TakmicenjeUrediVM
+
+
+<form method="post" ajax-poziv="da" ajax-rezultat="ajaxDiv" action="/Takmicenje/Uredi">
+        <label>Učesnik: </label>
+        <select asp-for="ucesnikID" asp-items="Model.ucesnici" class="form-control">
+        </select>
+        <label>Bodovi: </label>
+        <input asp-for="bodovi" class="form-control"/>
+        <br />
+        <input type="submit" value="Snimi" />
+    </form>
+
+
